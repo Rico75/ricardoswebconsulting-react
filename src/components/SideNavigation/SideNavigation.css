@@ -1,0 +1,32 @@
+.Side-navigation-link {
+  display: inline-block;
+  padding: 3px 8px;
+  text-decoration: none;
+  font-size: 1.125em; /* ~18px */
+}
+
+.Side-navigation-link,
+.Side-navigation-link:active,
+.Side-navigation-link:visited {
+  color: rgba(255, 255, 255, .6);
+}
+
+.Side-navigation-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.Side-navigation-link--highlight {
+  margin-right: 8px;
+  margin-left: 8px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, .15);
+  color: #fff;
+}
+
+.Side-navigation-link--highlight:hover {
+  background: rgba(0, 0, 0, .3);
+}
+
+.Navigation-spacer {
+  color: rgba(255, 255, 255, .3);
+}
