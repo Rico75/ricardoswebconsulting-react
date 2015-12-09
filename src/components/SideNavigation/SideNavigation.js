@@ -5,7 +5,7 @@ import classNames                       from 'classnames';
 import styles                           from './SideNavigation.css';
 import withStyles                       from '../../decorators/withStyles';
 import Link                             from '../Link';
-import { Nav, NavItem }                 from './node_modules/react-bootstrap/dist/react-bootstrap';
+import { Nav, NavItem }                 from 'react-bootstrap';
 
 function handleSelect(selectedKey) {
   alert('selected ' + selectedKey);
