@@ -17,15 +17,18 @@ class SideNavigation extends Component {
   };
 
   handleSelect = function(selectedKey) {
+    event.preventDefault();
     console.log('selected ' + selectedKey);
   };
 
   render() {
     return (
       <Nav bsStyle="pills" stacked activeKey={NavItem.eventKey} onSelect={this.handleSelect}>
-        <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-        <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-        <NavItem eventKey={3} >NavItem 3 content</NavItem>
+        <NavItem eventKey={1} href="/home" title="Item">Site Sample 1</NavItem>
+        <NavItem eventKey={2} href="/home" title="Item">Site Sample 2</NavItem>
+        <NavItem eventKey={3} href="/home" title="Item">Site Sample 3</NavItem>
+        <NavItem eventKey={3} href="/home" title="Item">Site Sample 4</NavItem>
+        <NavItem eventKey={3} href="/home" title="Item">Site Sample 5</NavItem>
       </Nav>
     )
   };

@@ -1,11 +1,8 @@
 /* SideNavigation
    This is the css for side navigation
 */
-
-@import url('../../../node_modules/bootstrap/dist/css/bootstrap.css');
-
 .nav {
-  width:25%;
+  width:20%;
 }
 .nav-pills > li > a {
     border-radius: 0px;
