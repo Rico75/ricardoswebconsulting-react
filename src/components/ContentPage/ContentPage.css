@@ -10,10 +10,7 @@
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   .ContentPage-container {
-    margin-left: 20%;
     position: relative;
-    max-width: 100%;
-    padding: 0 0 40px;
     top: -50px;
   }
 }

@@ -30,13 +30,15 @@ class ContactPage extends Component {
 export default ContactPage;
 */
 
+import styles from './ContactPage.css';
+import withStyles from '../../decorators/withStyles';
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 export const fields = ['firstName', 'lastName', 'email'];
 
 
 
-
+@withStyles(styles)
 class ContactPage extends Component {
 
   static propTypes = {
@@ -46,8 +48,13 @@ class ContactPage extends Component {
     submitting: PropTypes.bool.isRequired
   };
 
+  static contextTypes = {
+    onSetTitle: PropTypes.func.isRequired
+  };
+
 
   render() {
+    const title = 'Contact Us';
     const {
       fields: {firstName, lastName, email},
       handleSubmit,
@@ -55,22 +62,29 @@ class ContactPage extends Component {
       submitting
     } = this.props;
 
+    this.context.onSetTitle(title);
+
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name</label>
-          <input type="text" placeholder="First Name" {...firstName}/>
+      <div className="ContactPage">
+        <div className="ContactPage-container">
+          <h1>{title}</h1>
+          <form className="Contact-form" onSubmit={handleSubmit}>
+            <div>
+              <label>First Name</label>
+              <input type="text" placeholder="First Name" {...firstName}/>
+            </div>
+            <div>
+              <label>Last Name</label>
+              <input type="text" placeholder="Last Name" {...lastName}/>
+            </div>
+            <div>
+              <label>Email</label>
+              <input type="email" placeholder="Email" {...email}/>
+            </div>
+            <button onClick={handleSubmit}>Submit</button>
+          </form>
         </div>
-        <div>
-          <label>Last Name</label>
-          <input type="text" placeholder="Last Name" {...lastName}/>
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="Email" {...email}/>
-        </div>
-        <button onClick={handleSubmit}>Submit</button>
-      </form>
+      </div>
     );
   }
 }

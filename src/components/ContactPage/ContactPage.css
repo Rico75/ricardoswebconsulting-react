@@ -3,7 +3,19 @@
 @import '../variables.css';
 
 .ContactPage-container {
-  margin: 0 auto;
-  padding: 0 0 40px;
-  max-width: var(--max-content-width);
+    margin-left: 20%;
+    margin-top: -9.7%;
+    max-width: 100%;
+    padding: 0 0 40px;
+}
+
+.ContactPage-container > .Contact-form {
+    left: 2%;
+    position: relative;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .ContactPage-container {
+    position: relative;
+    top: -50px;
+  }
 }
