@@ -1,42 +1,14 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-/*
-import React, { PropTypes, Component } from 'react';
-import styles from './ContactPage.css';
-import withStyles from '../../decorators/withStyles';
-
-@withStyles(styles)
-class ContactPage extends Component {
-
-  static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired,
-  };
-
-  render() {
-    const title = 'Contact Us';
-    this.context.onSetTitle(title);
-    return (
-      <div className="ContactPage">
-        <div className="ContactPage-container">
-          <h1>{title}</h1>
-          <p>...</p>
-        </div>
-      </div>
-    );
-  }
-
-}
-
-export default ContactPage;
-*/
-
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
+import styles from './ContactPage.css';
+import withStyles from '../../decorators/withStyles';
 export const fields = ['firstName', 'lastName', 'email'];
 
 
 
-
+@withStyles(styles)
 class ContactPage extends Component {
 
   static propTypes = {
@@ -44,6 +16,10 @@ class ContactPage extends Component {
     handleSubmit: PropTypes.func.isRequired,
     resetForm: PropTypes.func.isRequired,
     submitting: PropTypes.bool.isRequired
+  };
+
+  static contextTypes = {
+    onSetTitle: PropTypes.func.isRequired
   };
 
 
@@ -55,22 +31,28 @@ class ContactPage extends Component {
       submitting
     } = this.props;
 
+    const title = 'Contact Us';
+    this.context.onSetTitle(title);
+
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name</label>
-          <input type="text" placeholder="First Name" {...firstName}/>
-        </div>
-        <div>
-          <label>Last Name</label>
-          <input type="text" placeholder="Last Name" {...lastName}/>
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="Email" {...email}/>
-        </div>
-        <button onClick={handleSubmit}>Submit</button>
-      </form>
+      <div className="ContactPage-form">
+        <h1>{title}</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>First Name</label>
+            <input type="text" placeholder="First Name" {...firstName}/>
+          </div>
+          <div>
+            <label>Last Name</label>
+            <input type="text" placeholder="Last Name" {...lastName}/>
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" placeholder="Email" {...email}/>
+          </div>
+          <button onClick={handleSubmit}>Submit</button>
+        </form>
+      </div>
     );
   }
 }
