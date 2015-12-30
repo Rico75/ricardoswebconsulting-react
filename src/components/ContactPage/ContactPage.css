@@ -1,21 +1,15 @@
 /* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 @import '../variables.css';
+/* @import '../../../node_modules/font-awesome/css/font-awesome.min.css'; */
 
-.ContactPage-container {
-    margin-left: 20%;
-    margin-top: -9.7%;
-    max-width: 100%;
-    padding: 0 0 40px;
+.ContactPage {
+  height: 534px;
 }
 
-.ContactPage-container > .Contact-form {
-    left: 2%;
-    position: relative;
-}
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  .ContactPage-container {
-    position: relative;
-    top: -50px;
-  }
+.ContactPage-form {
+  margin-top: -11%;
+  margin-left: 20%;
+  max-width: var(--max-content-width);
+  height: 534px;
 }
