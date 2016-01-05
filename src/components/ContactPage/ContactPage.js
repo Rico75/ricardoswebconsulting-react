@@ -23,9 +23,9 @@ class ContactPage extends Component {
     onSetTitle: PropTypes.func.isRequired
   };
 
-  handleSubmit = function(data) {
-    console.log('Submission received!', data);
-    this.props.dispatch(initialize('contact', {})); // clear form
+  handleSubmit = function(e) {
+    e.preventDefault();
+    console.log('Submission received!');
   };
 
   render() {
