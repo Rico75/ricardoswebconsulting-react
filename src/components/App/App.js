@@ -12,6 +12,8 @@ import Footer                           from '../Footer';
 import { Provider }                     from 'react-redux'
 import {createStore, combineReducers}   from 'redux';
 import {reducer as formReducer}         from 'redux-form';
+/* FontAwesome */
+import FontAwesome                      from '../../../node_modules/react-fontawesome/lib/index'
 
 /* Redux reducers go here */
 const reducers = {

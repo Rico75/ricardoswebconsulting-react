@@ -4,7 +4,10 @@ import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 import styles from './ContactPage.css';
 import withStyles from '../../decorators/withStyles';
+
 export const fields = ['firstName', 'lastName', 'email'];
+
+var FontAwesome = require('react-fontawesome');
 
 @withStyles(styles)
 class ContactPage extends Component {
@@ -35,33 +38,43 @@ class ContactPage extends Component {
       <div className="ContactPage">
         <div className="ContactPage-form">
           <h1>{title}</h1>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>First Name</label>
-              <input type="text" placeholder="First Name" {...firstName}/>
+          <form onSubmit={handleSubmit} className="form-horizontal">
+            <div className="form-group">
+              <label className="col-sm-2 control-label">First Name</label>
+              <div className="col-sm-10">
+                <input type="text" id="contact-first-name" className="form-control" placeholder="First Name" {...firstName}/>
+              </div>
             </div>
-            <div>
-              <label>Last Name</label>
-              <input type="text" placeholder="Last Name" {...lastName}/>
+            <div className="form-group">
+              <label className="col-sm-2 control-label">Last Name</label>
+              <div className="col-sm-10">
+                <input type="text" id="contact-last-name" className="form-control" placeholder="Last Name" {...lastName}/>
+              </div>
             </div>
-            <div>
-              <label>Email</label>
-              <input type="email" placeholder="Email" {...email}/>
+            <div className="form-group">
+              <label className="col-sm-2 control-label">Email</label>
+              <div className="col-sm-10">
+                <input type="email" id="contact-email" className="form-control" placeholder="Email" {...email}/>
+              </div>
             </div>
-            <div>
-              <label>Message</label>
-              <textarea
-                {...notes}
-                value={notes.value || ''}       // required for reset form to work (only on textarea's)
-                                                // see: https://github.com/facebook/react/issues/2533
-              />
+            <div className="form-group">
+              <label className="col-sm-2 control-label">Message</label>
+              <div className="col-sm-10">
+                <textarea
+                  id="contact-message"
+                  className="form-control"
+                  {...notes}
+                  value={notes.value || ''}       // required for reset form to work (only on textarea's)
+                                                  // see: https://github.com/facebook/react/issues/2533
+                />
+              </div>
             </div>
 
-            <div>
+            <div className="Contact-button-group">
               <button disabled={submitting} onClick={handleSubmit} className="btn btn-primary btn-lg">
-                {submitting ? <i className="fa fa-paper-plane" /> : <i className="fa fa-paper-plane" />} Submit
+                {submitting ? <FontAwesome name='paper-plane' /> : <FontAwesome name='paper-plane-o' /> } Submit
               </button>
-              <button disabled={submitting} onClick={resetForm}>
+              <button disabled={submitting} onClick={resetForm} className="btn btn-cancel btn-lg">
                 Clear Values
               </button>
             </div>

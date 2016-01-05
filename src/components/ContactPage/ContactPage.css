@@ -1,7 +1,6 @@
 /* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 @import '../variables.css';
-/* @import '../../../node_modules/font-awesome/css/font-awesome.min.css'; */
 
 .ContactPage {
   height: 534px;
@@ -13,3 +12,24 @@
   max-width: var(--max-content-width);
   height: 534px;
 }
+
+.Contact-button-group {
+  text-align: center;
+}
+
+.Contact-button-group button {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+textarea.form-control {
+    min-height: 250px;
+}
+
+/* Chrome only */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .ContactPage-form {
+    margin-top: -18%;
+  }
+}
+
