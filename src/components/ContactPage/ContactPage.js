@@ -1,9 +1,9 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-import React, {Component, PropTypes} from 'react';
-import {reduxForm} from 'redux-form';
-import styles from './ContactPage.css';
-import withStyles from '../../decorators/withStyles';
+import React, {Component, PropTypes}  from 'react';
+import {reduxForm, initialize}        from 'redux-form';
+import styles                         from './ContactPage.css';
+import withStyles                     from '../../decorators/withStyles';
 
 export const fields = ['firstName', 'lastName', 'email'];
 
@@ -23,6 +23,11 @@ class ContactPage extends Component {
     onSetTitle: PropTypes.func.isRequired
   };
 
+  handleSubmit = function(data) {
+    console.log('Submission received!', data);
+    this.props.dispatch(initialize('contact', {})); // clear form
+  };
+
   render() {
     const {
       fields: {firstName, lastName, email, notes},
@@ -38,7 +43,7 @@ class ContactPage extends Component {
       <div className="ContactPage">
         <div className="ContactPage-form">
           <h1>{title}</h1>
-          <form onSubmit={handleSubmit} className="form-horizontal">
+          <form onSubmit={this.handleSubmit} className="form-horizontal">
             <div className="form-group">
               <label className="col-sm-2 control-label">First Name</label>
               <div className="col-sm-10">
@@ -71,7 +76,7 @@ class ContactPage extends Component {
             </div>
 
             <div className="Contact-button-group">
-              <button disabled={submitting} onClick={handleSubmit} className="btn btn-primary btn-lg">
+              <button disabled={submitting} type="submit" className="btn btn-primary btn-lg">
                 {submitting ? <FontAwesome name='paper-plane' /> : <FontAwesome name='paper-plane-o' /> } Submit
               </button>
               <button disabled={submitting} onClick={resetForm} className="btn btn-cancel btn-lg">

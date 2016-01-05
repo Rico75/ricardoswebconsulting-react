@@ -26,10 +26,4 @@ textarea.form-control {
     min-height: 250px;
 }
 
-/* Chrome only */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  .ContactPage-form {
-    margin-top: -18%;
-  }
-}
 
