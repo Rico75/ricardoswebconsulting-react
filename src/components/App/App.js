@@ -1,28 +1,26 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-import React, { PropTypes, Component }  from 'react';
-import styles                           from './App.css';
-import withContext                      from '../../decorators/withContext';
-import withStyles                       from '../../decorators/withStyles';
-import Header                           from '../Header';
-import SideNavigation                   from '../SideNavigation';
-import Feedback                         from '../Feedback';
-import Footer                           from '../Footer';
+import React, { PropTypes, Component } from 'react';
+import styles from './App.css';
+import withContext from '../../decorators/withContext';
+import withStyles from '../../decorators/withStyles';
+import Header from '../Header';
+import SideNavigation from '../SideNavigation';
+import Feedback from '../Feedback';
+import Footer from '../Footer';
 /* Redux */
-import { Provider }                     from 'react-redux'
-import {createStore, combineReducers}   from 'redux';
-import {reducer as formReducer}         from 'redux-form';
-/* FontAwesome */
-import FontAwesome                      from '../../../node_modules/react-fontawesome/lib/index'
+import { Provider } from 'react-redux';
+import {createStore, combineReducers} from 'redux';
+import {reducer as formReducer} from 'redux-form';
 
 /* Redux reducers go here */
 const reducers = {
   // ... your other reducers here ...
-  form: formReducer     // <---- Mounted at 'form'. See note below.
-}
+  form: formReducer,     // <---- Mounted at 'form'. See note below.
+};
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
-/********************/
+/* ****************** */
 
 @withContext
 @withStyles(styles)

@@ -1,16 +1,16 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-import React              from 'react';
-import Router             from 'react-routing/src/Router';
-import http               from './core/HttpClient';
-import App                from './components/App';
-import SideNavigation     from './components/SideNavigation';
-import ContentPage        from './components/ContentPage';
-import ContactPage        from './components/ContactPage';
-import LoginPage          from './components/LoginPage';
-import RegisterPage       from './components/RegisterPage';
-import NotFoundPage       from './components/NotFoundPage';
-import ErrorPage          from './components/ErrorPage';
+import React from 'react';
+import Router from 'react-routing/src/Router';
+import http from './core/HttpClient';
+import App from './components/App';
+// import SideNavigation from './components/SideNavigation';
+import ContentPage from './components/ContentPage';
+import ContactPage from './components/ContactPage';
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
+import NotFoundPage from './components/NotFoundPage';
+import ErrorPage from './components/ErrorPage';
 
 const router = new Router(on => {
   on('*', async (state, next) => {

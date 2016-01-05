@@ -2,18 +2,16 @@
   SideNavigation
 * */
 
-import React, { PropTypes, Component }  from 'react';
-import classNames                       from 'classnames';
-import styles                           from './SideNavigation.css';
-import withStyles                       from '../../decorators/withStyles';
-import Link                             from '../Link';
-import { Nav, NavItem }                 from 'react-bootstrap';
+import React, { PropTypes, Component } from 'react';
+import styles from './SideNavigation.css';
+import withStyles from '../../decorators/withStyles';
+import { Nav, NavItem } from 'react-bootstrap';
 
 @withStyles(styles)
 class SideNavigation extends Component {
 
   static propTypes = {
-    NavItem: PropTypes.string
+    NavItem: PropTypes.string,
   };
 
   handleSelect = function(selectedKey) {
@@ -30,8 +28,8 @@ class SideNavigation extends Component {
         <NavItem eventKey={3} href="/home" title="Item">Site Sample 4</NavItem>
         <NavItem eventKey={3} href="/home" title="Item">Site Sample 5</NavItem>
       </Nav>
-    )
-  };
+    );
+  }
 
 }
 export default SideNavigation;
