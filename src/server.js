@@ -1,5 +1,3 @@
-/*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-
 import 'babel-core/polyfill';
 import path from 'path';
 import express from 'express';
@@ -7,6 +5,29 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import Router from './routes';
 import Html from './components/Html';
+
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+
+/* controllers */
+import contactPageSchemaController from './server/controllers/contactPageSchemaController';
+
+/* Express request pipeline */
+const app = express();
+app.use(express.static(path.join(__dirname, '../app/dist')));
+app.use(bodyParser.json());
+app.use('/api', contactPageSchemaController);
+
+app.listen(7777, function() {
+  console.log('Started listening on port', 7777);
+});
+
+/* Connect to mongodb database */
+mongoose.connect('mongodb://localhost/taco-attack-dev');
+mongoose.connection.on('error', function() {
+  console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
+});
+
 
 const server = global.server = express();
 

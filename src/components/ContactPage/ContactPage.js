@@ -1,19 +1,18 @@
-/*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-const FontAwesome = require('react-fontawesome');
-
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 import styles from './ContactPage.css';
 import withStyles from '../../decorators/withStyles';
+import FontAwesome from 'react-fontawesome';
+import actions from '../../actions/ContactFormActions';
+import ContactStore from '../../stores/ContactFormStore';
 
-export const fields = ['firstName', 'lastName', 'email'];
+export const fields = ['firstName', 'lastName', 'email', 'notes'];
 
 @withStyles(styles)
 class ContactPage extends Component {
 
   static propTypes = {
     fields: PropTypes.object.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
     resetForm: PropTypes.func.isRequired,
     submitting: PropTypes.bool.isRequired,
   };
@@ -22,17 +21,24 @@ class ContactPage extends Component {
     onSetTitle: PropTypes.func.isRequired,
   };
 
-  /*
-  handleSubmit = function(event) {
-    event.preventDefault();
+  constructor (props) {
+    super(props);
+    const contactStore = new ContactStore;
+    let storeState = contactStore.getState();
+    console.log('storeState: ', storeState);
+    this.state = {};
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit = () => {
     console.log('Submission received!');
+    console.log('this: ', this);
+    actions.addContact(this.state);
   };
-  */
 
   render() {
     const {
       fields: {firstName, lastName, email, notes},
-      handleSubmit,
       resetForm,
       submitting,
     } = this.props;
@@ -44,30 +50,31 @@ class ContactPage extends Component {
       <div className="ContactPage">
         <div className="ContactPage-form">
           <h1>{title}</h1>
-          <form onSubmit={handleSubmit} className="form-horizontal">
+          <form onSubmit={this.handleSubmit} className="form-horizontal">
             <div className="form-group">
               <label className="col-sm-2 control-label">First Name</label>
               <div className="col-sm-10">
-                <input type="text" id="contact-first-name" className="form-control" placeholder="First Name" {...firstName}/>
+                <input type="text" id="ContactFirstName" ref="ContactFirstName" className="form-control" placeholder="First Name" {...firstName} />
               </div>
             </div>
             <div className="form-group">
               <label className="col-sm-2 control-label">Last Name</label>
               <div className="col-sm-10">
-                <input type="text" id="contact-last-name" className="form-control" placeholder="Last Name" {...lastName}/>
+                <input type="text" id="ContactLastName" ref="ContactLastName" className="form-control" placeholder="Last Name" {...lastName} />
               </div>
             </div>
             <div className="form-group">
               <label className="col-sm-2 control-label">Email</label>
               <div className="col-sm-10">
-                <input type="email" id="contact-email" className="form-control" placeholder="Email" {...email}/>
+                <input type="email" id="ContactEmail" ref="ContactEmail" className="form-control" placeholder="Email" {...email} />
               </div>
             </div>
             <div className="form-group">
               <label className="col-sm-2 control-label">Message</label>
               <div className="col-sm-10">
                 <textarea
-                  id="contact-message"
+                  id="ContactMessage"
+                  ref="ContactMessage"
                   className="form-control"
                   {...notes}
                   value={notes.value || ''}       // required for reset form to work (only on textarea's)
